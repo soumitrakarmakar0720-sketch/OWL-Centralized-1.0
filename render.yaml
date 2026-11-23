@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: owl-unified-native
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:application --bind 0.0.0.0:$PORT --workers 2 --threads 2 --timeout 120
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: STORE_DATABASE_URL
+        sync: false
+      - key: STORE_SECRET_KEY
+        sync: false
+      - key: FINANCE_DATABASE_URL
+        sync: false
+      - key: FINANCE_SECRET_KEY
+        sync: false
+      - key: FINANCE_KYC_ENCRYPTION_KEY
+        sync: false
